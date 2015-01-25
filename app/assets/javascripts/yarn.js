@@ -15,9 +15,13 @@
         return {
             compile: function(element) {
                 var contents = element.contents().remove();
+                var compiledContents;
                 return {
-                    post: function(scope, element){
-                        $compile(contents)(scope, function(clone){
+                    post: function(scope, element) {
+                        if (!compiledContents) {
+                            compiledContents = $compile(contents);
+                        }
+                        compiledContents(scope, function(clone) {
                             element.append(clone);
                         });
                         scope.showReply = false;
