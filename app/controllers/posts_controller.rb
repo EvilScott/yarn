@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    parent = Post.find(post_params[:parent])
+    parent = Post.find(post_params[:parent]) if post_params[:parent]
     user = User.find(post_params[:user_id])
     new_post = Post.create(parent: parent, user: user, content: post_params[:content])
     render partial: 'post.json', locals: { post: new_post }

@@ -7,6 +7,6 @@ class Post < ActiveRecord::Base
   validates :user_id, presence: true
 
   def self.originals
-    Post.where(parent: nil).includes(:user)
+    Post.where(parent: nil).includes(:user).order(created_at: :desc)
   end
 end
