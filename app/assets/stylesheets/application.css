@@ -4,7 +4,3 @@
  *= require_tree .
  *= require_self
  */
-
-[ng-cloak] {
-    display: none;
-}

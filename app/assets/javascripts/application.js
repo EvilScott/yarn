@@ -1,4 +1,7 @@
 //= require jquery
 //= require jquery_ujs
-//= require angular.min
+//= require angular
+//= require angular-resource
+//= require moment
+//= require angular-moment
 //= require_tree .

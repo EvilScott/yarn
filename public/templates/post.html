@@ -1,0 +1,14 @@
+<li>
+    <span>{{post.user}} (<span am-time-ago="post.created_at"></span>): {{post.content}}</span>
+    <a href="" ng-click="showReply = true" ng-hide="showReply">[reply]</a>
+
+    <div ng-show="showReply">
+        <input type="text" ng-model="reply" />
+        <a href="" ng-click="postReply()">[post]</a>
+        <a href="" ng-click="showReply = false">[cancel]</a>
+    </div>
+
+    <ul ng-if="post.posts">
+        <post ng-repeat="child in post.posts" post="child"></post>
+    </ul>
+</li>
