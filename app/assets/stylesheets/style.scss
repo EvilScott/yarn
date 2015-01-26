@@ -4,10 +4,16 @@
 
 a {
     text-decoration: none;
+}
 
-    new-post[label="new post"] > & {
+new-post {
+    &[label="new post"] > a {
         display: inline-block;
         margin-bottom: 1rem;
+    }
+
+    input[type="text"] {
+        width: 40rem;
     }
 }
 

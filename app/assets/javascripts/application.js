@@ -4,4 +4,8 @@
 //= require angular-resource
 //= require moment
 //= require angular-moment
-//= require_tree .
+//= require yarn/yarn.module
+//= require yarn/yarnCtrl.controller
+//= require yarn/Post.factory
+//= require yarn/post.directive
+//= require yarn/newPost.directive
