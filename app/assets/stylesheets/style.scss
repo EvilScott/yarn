@@ -27,7 +27,6 @@ body {
         top: 0;
         right: 0;
         padding: 1rem 5rem 0 0;
-        width: 20rem;
 
         > p {
             text-align: right;
@@ -35,6 +34,8 @@ body {
         }
 
         form.login, form.register {
+            width: 20rem;
+
             input, button {
                 display: block;
             }
