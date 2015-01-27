@@ -1,7 +1,7 @@
 (function(angular) {
     'use strict';
 
-    angular.module('yarn').directive('post', function($compile) {
+    angular.module('yarn').directive('post', function($compile, userState) {
         return {
             compile: function(element) {
                 var contents = element.contents().remove();
@@ -11,6 +11,10 @@
                         compiledContents = compiledContents || $compile(contents);
                         compiledContents(scope, function(clone) {
                             element.append(clone);
+                        });
+
+                        scope.$watch(function() { return userState.loggedIn; }, function() {
+                            scope.loggedIn = userState.loggedIn;
                         });
                     }
                 };

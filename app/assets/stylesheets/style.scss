@@ -1,22 +1,61 @@
-[ng-cloak] {
-    display: none;
-}
-
-a {
-    text-decoration: none;
-}
-
-new-post {
-    &[label="new post"] > a {
-        display: inline-block;
+body {
+    & > div.container {
         margin-bottom: 1rem;
     }
 
-    input[type="text"] {
-        width: 40rem;
+    [ng-cloak] {
+        display: none;
     }
-}
 
-body > div.container {
-    margin-bottom: 1rem;
+    a {
+        text-decoration: none;
+    }
+
+    new-post {
+        &[label="new post"] > a {
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        input[type="text"] {
+            width: 40rem;
+        }
+    }
+
+    .user {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 1rem 5rem 0 0;
+        width: 20rem;
+
+        > p {
+            text-align: right;
+            margin-bottom: 0;
+        }
+
+        form.login, form.register {
+            input, button {
+                display: block;
+            }
+
+            label {
+                display: inline-block;
+                position: relative;
+                top: 12px;
+                left: 7px;
+                background: #fff;
+                line-height: normal;
+                margin-bottom: 0;
+            }
+
+            p.error, ul.errors li {
+                color: #D45;
+            }
+
+            ul.errors {
+                list-style-type: none;
+            }
+        }
+    }
 }

@@ -1,6 +1,6 @@
 <li>
     <span>{{post.user}} (<span am-time-ago="post.created_at"></span>): {{post.content}}</span>
-    <new-post label="reply" post="post" posts="post.posts"></new-post>
+    <new-post label="reply" post="post" posts="post.posts" ng-if="loggedIn"></new-post>
 
     <ul ng-if="post.posts">
         <post ng-repeat="child in post.posts" post="child"></post>

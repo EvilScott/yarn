@@ -1,0 +1,13 @@
+<form class="register" novalidate>
+    <label for="name">Username</label>
+    <input id="name" type="text" ng-model="user.name" />
+
+    <label for="password">Password</label>
+    <input id="password" type="password" ng-model="user.password" />
+
+    <button ng-click="register()">Register</button>
+
+    <ul class="errors">
+        <li ng-repeat="error in errors" ng-bind="error"></li>
+    </ul>
+</form>

@@ -1,0 +1,14 @@
+<div class="user" ng-cloak>
+    <p>
+        <span ng-show="loggedIn">
+            {{message}}
+            | <a href="" ng-click="logout()">Logout</a>
+        </span>
+        <span ng-hide="loggedIn">
+            <a href="" ng-click="show = 'login'">Login</a>
+            | <a href="" ng-click="show = 'register'">Register</a>
+        </span>
+    </p>
+    <login ng-if="show == 'login'"></login>
+    <register ng-if="show == 'register'"></register>
+</div>

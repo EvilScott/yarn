@@ -1,13 +1,13 @@
 (function(angular) {
     'use strict';
 
-    angular.module('yarn').directive('newPost', function(Post) {
+    angular.module('yarn').directive('newPost', function($cookies, Post) {
         return {
             link: function(scope) {
                 scope.postReply = function() {
                     var newPost = new Post({
                         content: scope.newPost,
-                        user_id: 2, //TODO get real user_id
+                        user_token: $cookies.token,
                         parent: scope.post ? scope.post.id : null
                     });
                     newPost.$save(function(newPost) {
@@ -15,7 +15,7 @@
                         scope.newPost = '';
                         scope.posts.unshift(newPost);
                     });
-                }
+                };
             },
             restrict: 'E',
             scope: { label: '@', post: '=', posts: '=' },

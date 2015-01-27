@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def create
     parent = Post.find(post_params[:parent]) if post_params[:parent]
-    user = User.find(post_params[:user_id])
+    user = User.find_by_token(post_params[:user_token])
     new_post = Post.create(parent: parent, user: user, content: post_params[:content])
     render partial: 'post.json', locals: { post: new_post }
   end
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:content)
-    params.require(:user_id)
-    params.permit(:content, :parent, :user_id)
+    params.require(:user_token)
+    params.permit(:content, :parent, :user_token)
   end
 end

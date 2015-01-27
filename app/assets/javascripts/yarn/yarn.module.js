@@ -1,5 +1,9 @@
 (function(angular) {
     'use strict';
 
-    angular.module('yarn', ['ngResource', 'angularMoment']);
+    angular.module('yarn', [
+        'ngResource',
+        'ngCookies',
+        'angularMoment'
+    ]);
 })(angular);
