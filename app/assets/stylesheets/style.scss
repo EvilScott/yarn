@@ -33,7 +33,7 @@ body {
             margin-bottom: 0;
         }
 
-        form.login, form.register {
+        form.login-register {
             width: 20rem;
 
             input, button {
@@ -50,12 +50,12 @@ body {
                 margin-bottom: 0;
             }
 
-            p.error, ul.errors li {
-                color: #D45;
-            }
-
             ul.errors {
                 list-style-type: none;
+
+                li {
+                    color: #D45;
+                }
             }
         }
     }

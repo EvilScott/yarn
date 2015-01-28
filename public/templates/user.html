@@ -4,11 +4,25 @@
             {{message}}
             | <a href="" ng-click="logout()">Logout</a>
         </span>
+
         <span ng-hide="loggedIn">
             <a href="" ng-click="show = 'login'">Login</a>
             | <a href="" ng-click="show = 'register'">Register</a>
         </span>
     </p>
-    <login ng-if="show == 'login'"></login>
-    <register ng-if="show == 'register'"></register>
+
+    <form ng-show="show" class="login-register" novalidate>
+        <label for="name">Username</label>
+        <input id="name" type="text" ng-model="user.name" />
+
+        <label for="password">Password</label>
+        <input id="password" type="password" ng-model="user.password" />
+
+        <button ng-if="show == 'login'" ng-click="login()">Login</button>
+        <button ng-if="show == 'register'" ng-click="register()">Register</button>
+
+        <ul class="errors">
+            <li ng-repeat="error in errors" ng-bind="error"></li>
+        </ul>
+    </form>
 </div>

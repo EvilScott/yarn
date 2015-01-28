@@ -12,5 +12,3 @@
 //= require yarn/post.directive
 //= require yarn/newPost.directive
 //= require yarn/user.directive
-//= require yarn/login.directive
-//= require yarn/register.directive

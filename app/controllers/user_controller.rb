@@ -5,7 +5,7 @@ class UserController < ApplicationController
       login!(user)
       render json: { success: true, user: { name: user.name, token: user.token } }
     else
-      render json: { error: 'Invalid username/password'}
+      render json: { errors: [ 'Invalid username/password' ] }
     end
   end
 
