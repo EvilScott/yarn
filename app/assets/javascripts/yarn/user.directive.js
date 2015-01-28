@@ -20,9 +20,7 @@
                         });
                 };
 
-                scope.$watch(function() {
-                    return $cookies.username && $cookies.token
-                }, function() {
+                scope.$watch(function() { return $cookies.username && $cookies.token }, function() {
                     scope.loggedIn = userState.loggedIn = !!($cookies.username && $cookies.token);
                     scope.message = 'Welcome ' + $cookies.username;
                 });
@@ -40,7 +38,7 @@
                         delete $cookies.username;
                         delete $cookies.token;
                     });
-                }
+                };
             },
             replace: true,
             restrict: 'E',
