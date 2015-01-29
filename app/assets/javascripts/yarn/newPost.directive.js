@@ -1,9 +1,17 @@
 (function(angular) {
     'use strict';
 
-    angular.module('yarn').directive('newPost', function($cookies, Post) {
+    angular.module('yarn').directive('newPost', function($cookies, $timeout, Post) {
         return {
-            link: function(scope) {
+            link: function(scope, element) {
+                scope.$watch('showReply', function(showReply) {
+                    if (showReply) {
+                        $timeout(function() {
+                            element.find('form input').focus();
+                        }, 0);
+                    }
+                });
+
                 scope.postReply = function() {
                     var newPost = new Post({
                         content: scope.newPost,

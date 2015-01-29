@@ -1,7 +1,7 @@
 <a href="" ng-click="showReply = true" ng-hide="showReply">[{{label}}]</a>
 
 <form ng-submit="postReply()" ng-show="showReply">
-    <input type="text" ng-model="newPost" ng-keyup="$event.keyCode == 27 && (showReply = false)" />
+    <input type="text" ng-model="newPost" ng-keyup="($event.keyCode == 27) && (showReply = false)" />
     <a href="" ng-click="postReply()">[post]</a>
     <a href="" ng-click="showReply = false">[cancel]</a>
 </form>
