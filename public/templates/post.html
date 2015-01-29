@@ -2,8 +2,11 @@
     <span>{{post.user}} (<span am-time-ago="post.created_at"></span>): {{post.content}}</span>
     <new-post label="reply" post="post" posts="post.posts" ng-if="loggedIn"></new-post>
 
-    <ul ng-if="post.posts">
+    <ul ng-if="post.posts || post.deeper">
         <post ng-repeat="child in post.posts" post="child"></post>
+        <li ng-if="post.deeper">
+            <a href="" ng-click="getDeeper(post.deeper)">[deeper]</a>
+        </li>
         <a href="" ng-if="post.nextPage" ng-click="getMore(post.nextPage)">[more]</a>
     </ul>
 </li>

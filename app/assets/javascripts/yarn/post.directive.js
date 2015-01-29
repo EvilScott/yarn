@@ -23,6 +23,13 @@
                                 scope.post.nextPage = data.nextPage;
                             });
                         };
+
+                        scope.getDeeper = function(deeperUrl) {
+                            $http.get(deeperUrl).success(function(data) {
+                                scope.post.posts = data.posts;
+                                scope.post.deeper = null;
+                            });
+                        };
                     }
                 };
             },

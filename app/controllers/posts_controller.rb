@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   def index
     @page = page
     @parent_id = parent_id
-    @tier = tier
     @posts = Post.get_posts(parent_id, page)
     @originals_count = Post.count_by_parent(parent_id)
     @next_page = Post.next_page?(parent_id, @page)
@@ -12,7 +11,8 @@ class PostsController < ApplicationController
     parent = Post.find(post_params[:parent]) if post_params[:parent]
     user = User.find_by_token(post_params[:user_token])
     new_post = Post.create(parent: parent, user: user, content: post_params[:content])
-    render partial: 'post.json', locals: { post: new_post }
+    @page = 1
+    render partial: 'post.json', locals: { post: new_post, tier: 1 }
   end
 
   def show
@@ -30,10 +30,6 @@ class PostsController < ApplicationController
   def parent_id
     parent_id = params.permit(:parent_id)[:parent_id].to_i
     parent_id == 0 ? nil : parent_id
-  end
-
-  def tier
-    params.permit(:tier)[:tier].to_i
   end
 
   def post_id

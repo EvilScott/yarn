@@ -21,6 +21,7 @@
                     newPost.$save(function(newPost) {
                         scope.showReply = false;
                         scope.newPost = '';
+                        scope.posts = scope.posts || [];
                         scope.posts.unshift(newPost);
                     });
                 };
