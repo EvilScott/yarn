@@ -4,5 +4,6 @@
 
     <ul ng-if="post.posts">
         <post ng-repeat="child in post.posts" post="child"></post>
+        <a href="" ng-if="post.nextPage" ng-click="getMore(post.nextPage)">[more]</a>
     </ul>
 </li>

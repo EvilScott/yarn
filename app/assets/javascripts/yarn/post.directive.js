@@ -1,7 +1,7 @@
 (function(angular) {
     'use strict';
 
-    angular.module('yarn').directive('post', function($compile, userState) {
+    angular.module('yarn').directive('post', function($compile, $http, userState) {
         return {
             compile: function(element) {
                 var contents = element.contents().remove();
@@ -16,6 +16,13 @@
                         scope.$watch(function() { return userState.loggedIn; }, function() {
                             scope.loggedIn = userState.loggedIn;
                         });
+
+                        scope.getMore = function(nextPageUrl) {
+                            $http.get(nextPageUrl).success(function(data) {
+                                scope.post.posts.push.apply(scope.post.posts, data.posts);
+                                scope.post.nextPage = data.nextPage;
+                            });
+                        };
                     }
                 };
             },

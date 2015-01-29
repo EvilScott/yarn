@@ -3,4 +3,5 @@
 <ul ng-cloak>
   <new-post label="new post" posts="posts" ng-if="loggedIn"></new-post>
   <post ng-repeat="post in posts" post="post"></post>
+  <a href="" ng-if="nextPage" ng-click="getMore(nextPage)">[more]</a>
 </ul>

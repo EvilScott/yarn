@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.originals
+    @page = page
+    @parent_id = parent_id
+    @posts = Post.get_posts(parent_id, page)
+    @originals_count = Post.count_by_parent(parent_id)
+    @next_page = Post.next_page?(parent_id, @page)
   end
 
   def create
@@ -11,10 +15,21 @@ class PostsController < ApplicationController
   end
 
   def show
+    @page = page
     @post = Post.find(post_id).includes(:user)
   end
 
   private
+
+  def page
+    page = params.permit(:page)[:page].to_i
+    page == 0 ? 1 : page
+  end
+
+  def parent_id
+    parent_id = params.permit(:parent_id)[:parent_id].to_i
+    parent_id == 0 ? nil : parent_id
+  end
 
   def post_id
     params.require(:id)
