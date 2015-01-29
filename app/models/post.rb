@@ -7,6 +7,7 @@ class Post < ActiveRecord::Base
   validates :user_id, presence: true
 
   POST_LIMIT = 10
+  TIER_LIMIT = 3
 
   def self.get_posts(parent, page)
     offset = (page - 1) * POST_LIMIT
